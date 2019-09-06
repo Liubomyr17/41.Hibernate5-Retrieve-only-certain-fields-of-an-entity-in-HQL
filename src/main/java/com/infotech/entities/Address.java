@@ -20,6 +20,9 @@ public class Address {
     @Column(name = "pin_code")
     private Long pincode;
 
+    @OneToOne(mappedBy="address")
+    private Employee employee;
+
     public String getStreet() {
         return street;
     }
@@ -44,8 +47,32 @@ public class Address {
     public void setPincode(Long pincode) {
         this.pincode = pincode;
     }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
     @Override
     public String toString() {
-        return "Address [street=" + street + ", city=" + city + ", state=" + state + ", pincode=" + pincode + "]";
+        return "Address{" +
+                "addressId=" + addressId +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", pincode=" + pincode +
+                ", employee=" + employee +
+                '}';
     }
 }
